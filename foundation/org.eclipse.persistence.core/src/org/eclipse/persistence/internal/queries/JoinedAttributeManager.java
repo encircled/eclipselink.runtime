@@ -1038,16 +1038,6 @@ public class JoinedAttributeManager implements Cloneable, Serializable {
                 }
             }
         }
-        // If pagination is used, the first and last rows may be missing their 1-m joined rows, so reject them from the results.
-        // This will cause them to build normally by executing a query.
-        if (this.isToManyJoin) {
-            if ((lastKey != null) && (this.baseQuery.getMaxRows() > 0)) {
-                this.dataResultsByPrimaryKey.remove(lastKey);
-            }
-            if ((firstKey != null) && (this.baseQuery.getFirstResult() > 0)) {
-                this.dataResultsByPrimaryKey.remove(firstKey);
-            }
-        }
     }
 
     /**
